@@ -1,0 +1,255 @@
+/* 기본 초기화 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #000000; /* 전체 배경을 검은색으로 */
+    color: #ffffff; /* 기본 글자색을 흰색으로 */
+}
+
+/* 전체 레이아웃 (3열 구조) */
+.container {
+    display: flex;
+    justify-content: center; /* 중앙 정렬 */
+    width: 100%;
+    max-width: 1300px; /* 전체 최대 폭 설정 */
+    margin: 0 auto; /* 중앙에 배치 */
+   /* min-height: 100vh;*/
+   align-items: flex-start;
+}
+
+/* 1. 왼쪽 내비게이션 바 */
+.left-sidebar {
+    width: 250px; /* 폭 고정 */
+    padding: 10px 20px 10px 0;
+    border-right: 1px solid #2f3336; /* 오른쪽 구분선 */
+    flex-shrink: 0; /* 폭이 줄어들지 않게 */
+    position: sticky;
+    top: 5px;
+    z-index: 10;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 9999px; /* 둥근 모서리 */
+}
+
+.nav-item:hover {
+    background-color: #0a0a0a; /* 호버 효과 */
+}
+
+.nav-item .icon {
+    font-size: 24px;
+    margin-right: 15px;
+}
+
+.post-button {
+    background-color: #1d9bf0;
+    color: white;
+    border: none;
+    width: 90%;
+    padding: 15px 0;
+    border-radius: 9999px;
+    font-weight: bold;
+    font-size: 17px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* 2. 중앙 콘텐츠 피드 */
+.center-content {
+    width: 600px; /* 피드 폭 고정 */
+    border-right: 1px solid #2f3336;
+    flex-shrink: 0;
+}
+
+.feed-header {
+    display: flex;
+    position: sticky;
+    top: 0;
+    background-color: #000000e0; /* 스크롤 시 배경 투명도 */
+    border-bottom: 1px solid #2f3336;
+}
+
+.tab {
+    flex-grow: 1;
+    text-align: center;
+    padding: 15px 0;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.tab:first-child {
+    border-bottom: 3px solid #1d9bf0; /* 선택된 탭 표시 */
+}
+
+/* 트윗 항목 (레이아웃 틀) */
+.tweet {
+    padding: 10px 15px;
+    border-bottom: 1px solid #2f3336;
+}
+
+.profile-pic {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: #333; /* 임시 배경색 */
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+/* 3. 오른쪽 사이드 바 */
+.right-sidebar {
+    width: 350px; /* 폭 고정 */
+    padding: 10px 0 10px 30px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 10px;
+    z-index: 10;
+}
+
+.search-box {
+    background-color: #202327;
+    padding: 12px 15px;
+    border-radius: 9999px;
+    color: #8899a6;
+    margin-bottom: 15px;
+}
+
+.premium-card, .trends-card {
+    background-color: #16181c;
+    border-radius: 16px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.subscribe-button {
+    background-color: #1d9bf0;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 9999px;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.trend-item {
+    padding: 8px 0;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.trend-item:hover {
+    background-color: #202327;
+}
+
+/* 폰트 크기 및 색상 조정 (옵션) */
+.name {
+    font-weight: bold;
+}
+
+/* 트윗 본문과 액션 사이에 간격을 추가합니다. */
+.tweet-text {
+    margin-bottom: 10px;
+}
+
+/* 갤러리 컨테이너: 그리드 설정을 위한 영역입니다. */
+.tweet-media {
+    display: grid; /* 내부 요소를 그리드로 배치 */
+    grid-template-columns: 1fr 1fr; /* 1:1 비율로 2개의 열(column) 생성 */
+    gap: 2px; /* 이미지 사이의 간격 (매우 좁게) */
+    border-radius: 16px; /* 이미지 전체를 감싸는 테두리를 둥글게 */
+    overflow: hidden; /* 둥근 테두리 밖으로 이미지가 튀어나가지 않도록 처리 */
+    margin-top: 10px;
+    width:80%
+}
+
+/* 갤러리 내 개별 이미지 스타일 */
+.media-item {
+    width: 100%; /* 부모 그리드 셀의 너비를 꽉 채움 */
+    height: 95%; /* 부모 그리드 셀의 높이를 꽉 채움 */
+    object-fit: cover; /* 이미지가 잘리더라도 영역을 꽉 채우도록 설정 */
+    display: block;
+    /* 이미지 자체의 둥근 모서리는 트윗 미디어 컨테이너가 처리합니다. */
+}
+
+/* 2x2 그리드의 모서리 부분만 별도로 둥글게 처리하여 더욱 깔끔하게 만듭니다. */
+.tweet-media .media-item:nth-child(1) {
+    border-top-left-radius: 16px;
+}
+
+.tweet-media .media-item:nth-child(2) {
+    border-top-right-radius: 16px;
+}
+
+.tweet-media .media-item:nth-child(3) {
+    border-bottom-left-radius: 16px;
+}
+
+.tweet-media .media-item:nth-child(4) {
+    border-bottom-right-radius: 16px;
+}
+
+/* 트윗 액션 컨테이너 */
+.tweet-actions {
+    display: flex; /* Flexbox 활성화 (자식 요소를 가로로 배치) */
+    
+    /* 🌟 핵심: 자식 요소(아이콘)들을 양쪽 끝에 배치하고, 그 사이에 균등한 간격을 만듭니다. 🌟 */
+    justify-content: space-between; 
+    
+    width: 65%; /* 중앙 피드 너비의 약 65%만 사용하도록 너비를 제한합니다. */
+    margin-top: 10px; /* 위쪽 본문과의 간격 */
+    margin-left: 20px; /* 프로필 사진 너비만큼 왼쪽 여백을 주어 본문과 정렬합니다. */
+}
+
+/* 개별 아이콘 스타일 (선택 사항) */
+.action-item {
+    font-size: 15px;
+    color: #8899a6; /* 연한 회색 */
+    cursor: pointer;
+    /* 아이콘과 카운트 텍스트 사이에 간격을 만들고 싶다면: */
+    display: flex; 
+    align-items: center;
+}
+
+/* 단일 사진 컨테이너 */
+.tweet-single-media {
+    margin-top: 10px;
+    border-radius: 16px; /* 모서리를 둥글게 */
+    overflow: hidden; /* 둥근 모서리 밖으로 이미지가 튀어나가지 않도록 */
+    width: 100%; /* 부모(중앙 피드)의 너비를 꽉 채우거나 조절 */
+    max-width: 500px; /* 최대 너비를 지정하여 너무 커지지 않도록 */
+
+    /* 🌟 단일 이미지의 높이를 고정하여 안정적인 레이아웃을 만듭니다. 🌟 */
+    height: 300px; /* 예시: 높이 300px로 고정. 필요에 따라 조절하세요. */
+}
+
+/* 단일 이미지 자체의 스타일 */
+.single-media-item {
+    width: 100%; /* 부모 컨테이너 너비 꽉 채움 */
+    height: 100%; /* 부모 컨테이너 높이 꽉 채움 */
+    object-fit: cover; /* 이미지가 잘리더라도 영역을 꽉 채우도록 설정 */
+    display: block; /* 이미지 하단에 생길 수 있는 미세한 여백 제거 */
+}
+
+/* 해시태그 스타일 */
+.hashtag {
+    color: #1d9bf0; /* X(트위터)의 파란색과 유사한 색상 */
+    font-weight: bold; /* 선택 사항: 해시태그를 더 강조하고 싶다면 */
+    cursor: pointer; /* 선택 사항: 클릭 가능한 링크처럼 보이게 */
+}
+
+.hashtag:hover {
+    text-decoration: underline; /* 선택 사항: 마우스 오버 시 밑줄 */
+}
